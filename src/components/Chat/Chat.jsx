@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestore";
 
 
 import { app, db } from "../../firebase";
@@ -8,20 +8,18 @@ import SendMessage from "../SendMessage/SendMessage";
 import { getAuth } from "firebase/auth";
 
 import { Messages } from "./ChatStyle";
+import { useEffect } from "react";
     
 
 export default function Chat() {
     const [message, setMessage] = useState([])
     const auth = getAuth(app)
 
-    const q = query(collection(db, "messages"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        const messages = [];
-        querySnapshot.forEach((doc) => {
-            messages.push(doc.data());
-        });
-        setMessage(messages);
-    });
+    useEffect(() => {
+        onSnapshot(query(collection(db, 'messages'), orderBy('createdAt'), limit(50)), (snapshot) => {
+            setMessage(snapshot.docs.map((doc) => doc.data()))
+        })
+    }, [])
 
     return (
         <>

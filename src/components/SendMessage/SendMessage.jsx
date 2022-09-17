@@ -5,36 +5,26 @@ import { FieldValue, collection, serverTimestamp, doc, addDoc } from "firebase/f
 import { app, db } from '../../firebase'
 
 export default function SendMessage() {
-    const [msg, setMsg] = useState('')
+    const [userMessage, setUserMessage] = useState('')
 
-    const auth = getAuth(app)
     async function sendMessage(event) {
         event.preventDefault()
+        const auth = getAuth(app)
 
         const {uid, photoURL} = auth.currentUser
 
-        const dbref = collection(db, 'messages')
-        const data = {
-            text: msg,
+        await addDoc(collection(db, 'messages'), {
+            text: userMessage,
             photoURL,
             uid,
-            createdAT: serverTimestamp()
-        }
-
-        await addDoc(dbref, data)
-            .then(docref => {
-                //alert('messagem enviada')
-            })
-            .catch(error => {
-                console.log(error.message)
-            })
-            
-        setMsg('')
+            createdAt: serverTimestamp()
+        })           
+        setUserMessage('')
     }
 
     return (
         <form onSubmit={sendMessage}>
-            <input onChange={(event) => setMsg(event.target.value)} value={msg} type="text" />
+            <input onChange={(event) => setUserMessage(event.target.value)} value={userMessage} type="text" />
             <button>Enviar</button>
         </form>
     )
