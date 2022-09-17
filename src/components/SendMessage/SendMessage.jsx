@@ -23,7 +23,7 @@ export default function SendMessage() {
 
         await addDoc(dbref, data)
             .then(docref => {
-                alert('messagem enviada')
+                //alert('messagem enviada')
             })
             .catch(error => {
                 console.log(error.message)

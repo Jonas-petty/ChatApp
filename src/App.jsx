@@ -6,6 +6,8 @@ import { app } from "./firebase"
 import Chat from "./components/Chat/Chat"
 import SignIn from "./components/SignIn/SignIn"
 
+import GlobaStyle  from './GlobaStyle'
+
 
 function App() {
   const auth = getAuth(app)
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <>
+      <GlobaStyle />
       {user ? <Chat /> : <SignIn />}
     </>
   )
