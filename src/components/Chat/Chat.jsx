@@ -5,6 +5,7 @@ import { useCollection } from 'react-firebase-hooks/firestore'
 
 import { db } from "../../firebase";
 import SignOut from "../SignOut/SignOut";
+import SendMessage from "../SendMessage/SendMessage";
     
 
 export default function Chat() {
@@ -19,17 +20,16 @@ export default function Chat() {
         setMessage(messages);
     });
 
-
     return (
         <>
             <SignOut />
             {message.map(({id, text, photoURL}) => (
                 <div key={id}>
-                    <img src={photoURL} alt="tedfd" />
+                    <img src={photoURL} alt="User profile picture" />
                     <p>{text}</p>
                 </div>
             ))}
-            
+            <SendMessage />
         </>
     )
 }
