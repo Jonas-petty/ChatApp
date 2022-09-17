@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
-import { FieldValue, collection, serverTimestamp, doc, addDoc } from "firebase/firestore";
+import { collection, serverTimestamp, addDoc } from "firebase/firestore";
 
 import { app, db } from '../../firebase'
+
+import {MessageInput, MessageForm, SendMessageButton} from './SendMessageStyle' 
 
 export default function SendMessage() {
     const [userMessage, setUserMessage] = useState('')
@@ -23,9 +25,9 @@ export default function SendMessage() {
     }
 
     return (
-        <form onSubmit={sendMessage}>
-            <input onChange={(event) => setUserMessage(event.target.value)} value={userMessage} type="text" />
-            <button>Enviar</button>
-        </form>
+        <MessageForm onSubmit={sendMessage}>
+            <MessageInput onChange={(event) => setUserMessage(event.target.value)} value={userMessage} type="text" placeholder="Messagem..."/>
+            <SendMessageButton>Enviar</SendMessageButton>
+        </MessageForm>
     )
 }

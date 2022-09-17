@@ -7,6 +7,11 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    body {
+        background-color: #21212D;
+        
+    }
 `
 
 export default GlobalStyle

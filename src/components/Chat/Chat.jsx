@@ -3,13 +3,12 @@ import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestor
 
 
 import { app, db } from "../../firebase";
-import SignOut from "../SignOut/SignOut";
-import SendMessage from "../SendMessage/SendMessage";
+import { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 
 import { Messages } from "./ChatStyle";
-import { useEffect } from "react";
-    
+import SignOut from "../SignOut/SignOut";
+import SendMessage from "../SendMessage/SendMessage";
 
 export default function Chat() {
     const [message, setMessage] = useState([])
@@ -26,7 +25,7 @@ export default function Chat() {
             <SignOut />
             <Messages>
             {message.map(({id, text, photoURL, uid}) => (
-                <div>
+                <div className="messagem">
                     <div key={id} className={`msg ${uid == auth.currentUser.uid ? 'sent' : 'received'}`}>
                         <img src={photoURL} alt="User profile picture" />
                         <p>{text}</p>

@@ -3,6 +3,8 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth } f
 
 import { app } from "../../firebase";
 
+import { Form, Input, Container, Button } from "./SignInStyle";
+
 export default function SignIn() {
     function SignInWithEmailAndPassword(event) {
         event.preventDefault()
@@ -43,11 +45,14 @@ export default function SignIn() {
 
 
     return (
-        <form>
-            <input type="email" name="email" id="email" placeholder="E-mail" required/>
-            <input type="password" name="password" id="password" placeholder="Senha" required/>
-            <button onClick={SignInWithEmailAndPassword}>Cadastrar</button>
-            <button onClick={logInWithEmailAndPassword}>Entrar</button>
-        </form>
+        <Container>
+            <Form>
+                <h1>Bem Vindo(a)</h1>
+                <Input type="email" name="email" id="email" placeholder="E-mail" required/>
+                <Input type="password" name="password" id="password" placeholder="Senha" required/>
+                <Button onClick={SignInWithEmailAndPassword}>Cadastrar</Button>
+                <Button onClick={logInWithEmailAndPassword} primary>Entrar</Button>
+            </Form>
+        </Container>
     )
 }   
