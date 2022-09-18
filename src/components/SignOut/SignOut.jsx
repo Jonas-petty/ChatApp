@@ -2,12 +2,13 @@ import React from "react";
 import { getAuth } from 'firebase/auth'
 
 import { app } from '../../firebase'
+import { SignOutButton } from "./SignOutStyle";
 
 export default function SignOut() {
     const auth = getAuth(app)
     return (
         <>
-            <button onClick={() => auth.signOut()}>Sair</button>
+            <SignOutButton onClick={() => auth.signOut()}>Sair</SignOutButton>
         </>
     )
 }

@@ -11,7 +11,7 @@ const Container = styled.section`
 const Form = styled.form`
     background-color: #2C2C38;
     color: #FFF;
-    width: 30rem;
+    min-width: 300px;
     padding: 20px;
     margin: 0px;
     display: grid;
