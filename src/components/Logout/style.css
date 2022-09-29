@@ -1,0 +1,9 @@
+.logout {
+    font-size: 1rem;
+    color: #FFF;
+    transition: 0.2s;
+}
+
+.logout:hover {
+    text-decoration: underline;
+}

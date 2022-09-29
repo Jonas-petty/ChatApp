@@ -1,24 +1,22 @@
 import React from "react"
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { getAuth } from "firebase/auth"
+import { BrowserRouter as Router } from 'react-router-dom'
 
-import { app } from "./firebase"
-import Chat from "./components/Chat/Chat"
-import SignIn from "./components/SignIn/SignIn"
+import { auth } from "./firebase"
+import MainRoutes from "./routes"
+import { GlobalStyle } from "./styles"
 
-import GlobaStyle  from './GlobaStyle'
+import Chat from "./pages/Chat/index"
 
 
-function App() {
-  const auth = getAuth(app)
+export default function App() {
   const [user] = useAuthState(auth)
-
   return (
     <>
-      <GlobaStyle />
-      {user ? <Chat /> : <SignIn />}
+      <Router>
+        <GlobalStyle />
+        {user ? <Chat /> : <MainRoutes />}
+      </Router>
     </>
   )
 }
-
-export default App

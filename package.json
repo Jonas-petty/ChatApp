@@ -1,5 +1,5 @@
 {
-  "name": "pettychat",
+  "name": "chatapp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-router-dom": "^6.4.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

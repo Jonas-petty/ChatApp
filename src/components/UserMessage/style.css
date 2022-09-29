@@ -1,0 +1,32 @@
+.message_form {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 66.6%;
+    display: grid;
+    grid-template: 1fr / 8fr 1fr;
+}
+
+input {
+    font-size: 1rem;
+    background-color: #2C2C38;
+    color: #77778a;
+    border: 1px solid #484854;
+    outline: none;
+    text-indent: 10px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #645EC6;
+    border: 1px solid #645EC6;
+}
+
+@media (max-width: 650px) {
+    .message_form {
+        position: fixed;
+        bottom: 0;
+        width: 99.8%;
+    }
+}
+
